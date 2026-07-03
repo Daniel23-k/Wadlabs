@@ -1,0 +1,348 @@
+/* Design tokens used across the page */
+:root {
+    --bg: #f6f3ec;
+    --surface: #fffdf9;
+    --ink: #22201f;
+    --muted: #5f5b57;
+    --brand: #1f6f78;
+    --brand-dark: #17545b;
+    --accent: #d59f3a;
+    --line: #d8d2ca;
+    --radius: 0.9rem;
+    --shadow: 0 0.7rem 1.8rem rgba(34, 32, 31, 0.12);
+}
+
+/* Basic reset for predictable spacing and sizing */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Smooth scrolling for internal anchor links */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Global typography and atmospheric background layers */
+body {
+    font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+    color: var(--ink);
+    background:
+        radial-gradient(circle at top right, #f0dcb5 0%, transparent 32%),
+        radial-gradient(circle at bottom left, #c9dde0 0%, transparent 36%),
+        var(--bg);
+    line-height: 1.55;
+}
+
+/* Explicit heading hierarchy from h1 to h6 */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: var(--ink);
+    font-weight: 700;
+    line-height: 1.25;
+}
+
+h1 {
+    font-size: clamp(1.9rem, 4vw, 2.7rem);
+}
+
+h2 {
+    font-size: clamp(1.45rem, 3vw, 2rem);
+}
+
+h3 {
+    font-size: clamp(1.15rem, 2.3vw, 1.35rem);
+}
+
+h4 {
+    font-size: 1.1rem;
+}
+
+h5 {
+    font-size: 1rem;
+}
+
+h6 {
+    font-size: 0.92rem;
+}
+
+/* Shared content width wrapper */
+.site-header,
+.section,
+.site-footer {
+    width: min(92%, 72rem);
+    margin: 0 auto;
+}
+
+.site-header {
+    padding: 1.1rem 0 2rem;
+}
+
+/* Top navigation bar uses flexbox for alignment and wrapping */
+.site-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    padding: 0.8rem 1rem;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background-color: rgba(255, 253, 249, 0.95);
+    -webkit-backdrop-filter: blur(0.35rem);
+    backdrop-filter: blur(0.35rem);
+}
+
+/* Brand text logo styling */
+.logo {
+    font-size: 1.2rem;
+    font-weight: 700;
+    letter-spacing: 0.04rem;
+    color: var(--brand-dark);
+    text-decoration: none;
+}
+
+/* Horizontal navigation links */
+.nav-list {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+}
+
+/* Link interaction feedback */
+.nav-list a {
+    text-decoration: none;
+    color: var(--ink);
+    font-weight: 600;
+    font-size: 0.98rem;
+    padding: 0.45rem 0.7rem;
+    border-radius: 0.5rem;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.nav-list a:hover,
+.nav-list a:focus-visible {
+    background-color: var(--brand);
+    color: #ffffff;
+}
+
+/* Hero section uses flexbox for text and image columns */
+.hero {
+    margin-top: 1.3rem;
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    background: linear-gradient(120deg, #ffffff 0%, #f2ede4 100%);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+}
+
+/* Hero copy block */
+.hero-content {
+    flex: 1 1 22rem;
+    padding: 1.5rem;
+}
+
+.hero h1 {
+    line-height: 1.2;
+    margin-bottom: 0.85rem;
+}
+
+.hero p {
+    color: var(--muted);
+    max-width: 42ch;
+    margin-bottom: 1rem;
+}
+
+/* Hero image container */
+.hero-media {
+    flex: 1 1 18rem;
+    min-height: 16rem;
+}
+
+/* Ensures the banner image fills its container without distortion */
+.hero-media img {
+    width: 100%;
+    height: 100%;
+    min-height: 16rem;
+    object-fit: cover;
+    display: block;
+}
+
+/* Primary call-to-action button style */
+.cta {
+    display: inline-block;
+    text-decoration: none;
+    color: #ffffff;
+    background-color: var(--brand);
+    border: 2px solid var(--brand);
+    border-radius: 999px;
+    padding: 0.62rem 1.1rem;
+    font-weight: 700;
+    transition: background-color 0.25s ease, transform 0.25s ease;
+}
+
+.cta:hover,
+.cta:focus-visible {
+    background-color: var(--brand-dark);
+    transform: translateY(-0.12rem);
+}
+
+.cta.secondary {
+    background-color: transparent;
+    color: var(--brand-dark);
+}
+
+/* Shared card-like section shell */
+.section {
+    margin-top: 1.2rem;
+    padding: 1.35rem;
+    background-color: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+}
+
+.section h2 {
+    font-size: clamp(1.4rem, 3vw, 2rem);
+    margin-bottom: 0.7rem;
+    text-align: center;
+}
+
+.section p {
+    color: var(--muted);
+    margin-bottom: 0.65rem;
+}
+
+/* CSS Grid requirement: service cards in responsive columns */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.9rem;
+    margin-top: 0.7rem;
+}
+
+/* Service card with hover lift effect */
+.card {
+    border: 1px solid var(--line);
+    border-radius: 0.8rem;
+    padding: 1rem;
+    background-color: #fff;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.card:hover {
+    transform: translateY(-0.2rem);
+    box-shadow: 0 0.5rem 1.2rem rgba(31, 111, 120, 0.14);
+}
+
+.card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+}
+
+/* Flex row for pricing/training plans */
+.plan-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.9rem;
+    margin-top: 0.75rem;
+}
+
+.plan-card {
+    flex: 1 1 15rem;
+    border: 1px solid var(--line);
+    border-radius: 0.8rem;
+    padding: 1rem;
+    background: linear-gradient(160deg, #fff 0%, #f5efe6 100%);
+}
+
+.plan-card h3 {
+    margin-bottom: 0.4rem;
+    font-size: 1.1rem;
+}
+
+.price {
+    color: var(--brand-dark);
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.plan-card ul {
+    margin-left: 1rem;
+}
+
+.plan-card li {
+    margin-bottom: 0.35rem;
+}
+
+/* Contact section visual accent */
+.contact-section {
+    border-left: 0.4rem solid var(--accent);
+}
+
+.contact-list {
+    margin: 0.8rem 0 1rem;
+}
+
+.contact-section .cta.secondary {
+    display: block;
+    width: fit-content;
+    margin: 0.5rem auto 0;
+}
+
+/* Footer metadata text */
+.site-footer {
+    text-align: center;
+    margin: 1.4rem auto 1.6rem;
+    color: var(--muted);
+    font-size: 0.95rem;
+}
+
+/* Tablet breakpoint adjustments */
+@media (max-width: 56rem) {
+    .hero {
+        flex-direction: column;
+    }
+
+    .hero-media,
+    .hero-media img {
+        min-height: 13rem;
+    }
+
+    .services-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+/* Mobile breakpoint adjustments */
+@media (max-width: 38rem) {
+    .site-nav {
+        justify-content: center;
+    }
+
+    .logo {
+        width: 100%;
+        text-align: center;
+    }
+
+    .nav-list {
+        justify-content: center;
+    }
+
+    .section,
+    .hero-content {
+        padding: 1rem;
+    }
+
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+}
